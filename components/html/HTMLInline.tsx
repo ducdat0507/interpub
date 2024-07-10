@@ -18,7 +18,7 @@ export default function HTMLInline({ style, componentStyle, content }: HTMLBlock
       whiteSpace: "normal",
       color: style.color ?? useThemeColor("color-1"),
       textAlign: style.textAlign ?? "left",
-      fontSize: 16,
+      fontSize: 17,
     },
     a: {
       color: useThemeColor("color-2"),
@@ -38,6 +38,7 @@ export default function HTMLInline({ style, componentStyle, content }: HTMLBlock
       source={{ html: content }}
       baseStyle={componentStyle}
       tagsStyles={tagsStyles}
+      ignoredDomTags={["img", "image", "video", "table", "iframe", "object"]}
       contentWidth={width}
     />
   );

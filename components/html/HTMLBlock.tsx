@@ -14,8 +14,8 @@ export default function HTMLBlock({ content }: HTMLBlockProps) {
     body: {
       whiteSpace: "normal",
       color: useThemeColor("color-1"),
-      fontSize: 16,
-      marginBottom: -8,
+      fontSize: 17,
+      marginBottom: -12,
     },
     a: {
       color: useThemeColor("color-2"),
@@ -23,14 +23,17 @@ export default function HTMLBlock({ content }: HTMLBlockProps) {
     },
     p: {
       marginTop: 0,
-      marginBottom: 8,
+      marginBottom: 12,
     },
   };
+
+  if (!/\<p(?:\>| .*\>)/.test(content)) content = "<p>" + content + "</p>"
 
   return (
     <RenderHtml
       source={{ html: content }}
       tagsStyles={tagsStyles}
+      ignoredDomTags={["img", "image", "video", "table", "iframe", "object"]}
       contentWidth={width}
     />
   );

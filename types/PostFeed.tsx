@@ -4,10 +4,12 @@ type PostFeed = {
     posts: Post[],
 
     busy: boolean,
-    onUpdate: () => void;
+    onUpdate?: (posts: Post[]) => void;
 
-    nextUrl: string,
-    getNext: () => Promise<Post[]>,
+    nextUrl?: string,
+    getNext: () => Promise<void>,
+    previousUrl?: string,
+    getPrevious: () => Promise<void>,
 }
 
 export default PostFeed;

@@ -4,6 +4,7 @@ import UserFeed from "./user/UserFeed";
 import { useEffect, useReducer } from "react";
 import TextBody from "../basic/TextBody";
 import Post from "@/types/Post";
+import { View } from "react-native";
 
 type PostListArgs = {
   posts: Post[];

@@ -9,7 +9,7 @@ export default function TextBody({
   return (
     <Text style={[
       {
-        fontSize: 16,
+        fontSize: 17,
         color: useThemeColor("color-1"),
       },
       style

@@ -14,6 +14,7 @@ export const Colors = {
     "color-2": "#0000008f",
     "color-3": "#0000005f",
     "border-1": "#0000003f",
+    "border-2": "#0000001f",
   },
   dark: {
     "background-1": "#000000",
@@ -22,5 +23,6 @@ export const Colors = {
     "color-2": "#ffffff8f",
     "color-3": "#ffffff5f",
     "border-1": "#ffffff3f",
+    "border-2": "#ffffff1f",
   },
 };

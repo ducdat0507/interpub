@@ -8,15 +8,15 @@ export default async function getUser(handle: string): Promise<Account> {
 
     let url: any = await fetch("https://" + domain + "/.well-known/webfinger?resource=acct:" + localName + "@" + domain);
     url = await url.json() as any;
-    console.log(url);
+    // console.log(url);
     url = url.links?.find(x => x.rel.includes("://webfinger.net/rel/profile-page")).href as string;
-    console.log(url);
+    // console.log(url);
         
     let data: any = await fetch(url, 
         { headers: { Accept: 'application/ld+json; profile="https://www.w3.org/ns/activitystreams"' } }
     );
     data = await data.json();
-    console.log(data);
+    // console.log(data);
 
     let result = convertUser(data);
     result.handle = "@" + localName + "@" + handle;
@@ -28,8 +28,8 @@ export default async function getUser(handle: string): Promise<Account> {
 export function convertUser(data: any): Account {
     let result = {
         displayName: data.name,
-        profileImageUrl: data.icon.url,
-        profileBannerUrl: data.image.url,
+        profileImageUrl: data.icon?.url,
+        profileBannerUrl: data.image?.url,
         description: data.summary,
         
         creationDate: data.published ? new Date(data.published) : undefined,

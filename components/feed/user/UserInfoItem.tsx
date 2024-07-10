@@ -7,7 +7,7 @@ import TextBody from "@/components/basic/TextBody";
 import HorizontalRule from "@/components/basic/HorizontalRule";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
-import getUser from "@/api/getUser";
+import getUser from "@/api/activitypub/getUser";
 import HTMLBlock from "@/components/html/HTMLBlock";
 import DashedLine from "@/components/basic/DashedLine";
 import HTMLInline from "@/components/html/HTMLInline";
