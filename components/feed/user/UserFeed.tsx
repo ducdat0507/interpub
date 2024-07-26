@@ -26,7 +26,7 @@ const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
 export default function UserFeed() {
 
-  const [handle, setHandle] = useState("@ducdat0507@mastodon.gamedev.place");
+  const [handle, setHandle] = useState("@ducdat0507@misskey.design");
   const [[localName, domain], setName] = useState(["", ""]);
 
   const [data, setData] = useState({} as Account);
@@ -50,7 +50,7 @@ export default function UserFeed() {
     }).then(x => {
       setData(x);
       console.log(api);
-      return api.getPostFeed(x.feeds?.accountTimeline?.endpoint);
+      return api.getPostFeed(x.feeds?.accountTimeline);
     }).then(x => {
       timelineFeed.current = (x);
       timelineFeed.current.onUpdate = updateTimelinePosts;
@@ -270,7 +270,7 @@ export default function UserFeed() {
 
         ListFooterComponent={<>
           <TextBody style={{color: color3, alignSelf: "center"}}>End of feed</TextBody>
-          <View style={{height: 60}} />
+          <View style={{height: 120}} />
         </>}
         />
     </>

@@ -1,5 +1,7 @@
 import Account from "@/types/Account";
 import MastodonAPI from "./mastodon/api";
+import MisskeyAPI from "./misskey/api";
+import PostFeed from "@/types/PostFeed";
 
 export default async function getAPI(domain: string) {
     let url: any = await fetch("https://" + domain + "/.well-known/nodeinfo");
@@ -17,6 +19,8 @@ export default async function getAPI(domain: string) {
     switch (info.software.name.toLowerCase()) {
         case "mastodon":
             return MastodonAPI(domain);
+        case "misskey":
+            return MisskeyAPI(domain);
         default:
             throw new Error("Software not in supported list");
     }
