@@ -11,7 +11,7 @@ export default function TextMono({
       {
         fontSize: 14,
         color: useThemeColor("color-1"),
-        fontFamily: "Menlo",
+        fontFamily: "Meslo",
       },
       style
     ]} {...rest} />
