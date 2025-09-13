@@ -26,7 +26,7 @@ const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
 export default function UserFeed() {
 
-  const [handle, setHandle] = useState("@ducdat0507@misskey.design");
+  const [handle, setHandle] = useState("@yhvr@wetdry.world");
   const [[localName, domain], setName] = useState(["", ""]);
 
   const [data, setData] = useState({} as Account);
@@ -248,12 +248,12 @@ export default function UserFeed() {
                 </> : null }
               <UserInfoItem title={"Joined"} content={data.creationDate ? formatDate(data.creationDate) : "¯\\_(ツ)_/¯"} />
               { data.extraInfo?.length 
-                ? data.extraInfo.map(link => <UserInfoItem title={link.title} content={link.content} />)
+                ? data.extraInfo.map((link, index) => <UserInfoItem title={link.title} content={link.content} key={index} />)
                 : null }
               { data.links?.length 
                 ? <> 
                   <DashedLine baseStyle={{ marginVertical: 4 }}  />
-                  {data.links.map(link => <UserInfoItem title={link.title} content={link.content} />)}
+                  {data.links.map((link, index) => <UserInfoItem title={link.title} content={link.content} key={index} />)}
                 </> : null }
             </View>
             <HorizontalRule style={{ marginVertical: 8 }} />
@@ -266,7 +266,8 @@ export default function UserFeed() {
           <ZigZagLine baseStyle={{ marginVertical: 24 }}  />
         </>}
 
-        renderItem={({item}) => <PostCard post={item} />}
+        // TODO this is terrible
+        renderItem={({item}) => <PostCard post={item} key={item.createdAt.toISOString()} />}
 
         ListFooterComponent={<>
           <TextBody style={{color: color3, alignSelf: "center"}}>End of feed</TextBody>

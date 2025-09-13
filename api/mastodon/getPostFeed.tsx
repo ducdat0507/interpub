@@ -1,17 +1,18 @@
 import { formatDate } from "@/helper/format";
-import Account from "@/types/Account";
+import Account, { FeedInfo } from "@/types/Account";
 import Post from "@/types/Post";
 import PostFeed from "@/types/PostFeed";
 import { convertAccount } from "./getAccount";
 import * as NodeEmoji from "node-emoji";
 
-export default async function getPostFeed(url: string, domain: string): Promise<PostFeed> {
+export default async function getPostFeed(feed: FeedInfo, domain: string): Promise<PostFeed> {
 
     let result = {
         posts: [],
-        nextUrl: url,
+        nextUrl: feed.endpoint,
         busy: false,
         getNext() {
+            console.log(this.nextUrl);
             if (this.busy || !this.nextUrl) return;
             this.busy = true;
             return fetch(this.nextUrl).then(x => {

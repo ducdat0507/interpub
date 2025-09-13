@@ -17,6 +17,7 @@ export default async function getPostFeed(url: string): Promise<PostFeed> {
         nextUrl: data.first,
         busy: false,
         getNext() {
+            if (this.nextUrl === undefined) return;
             if (this.busy) return;
             this.busy = true;
             return fetch(this.nextUrl, 
@@ -66,7 +67,11 @@ export default async function getPostFeed(url: string): Promise<PostFeed> {
 
                 for (let a = 0; a < 5; a++) fetchPost();
             });
-        }
+        },
+        async getPrevious() {
+            if (this.previousUrl === undefined) return;
+            // TODO
+        },
     } as PostFeed;
 
     return result;

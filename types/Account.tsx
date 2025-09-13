@@ -29,4 +29,10 @@ type Account = {
     },
 }
 
+export type FeedInfo = {
+    api: string;
+    endpoint: string;
+    postBody?: string;
+}
+
 export default Account;
