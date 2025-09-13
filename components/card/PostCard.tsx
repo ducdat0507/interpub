@@ -15,6 +15,7 @@ import { formatDuration } from "@/helper/format";
 import { Ionicons } from "@expo/vector-icons";
 import TextHeader from "../basic/TextHeader";
 import EmojiDisplay from "../basic/EmojiDisplay";
+import { router } from "expo-router";
 
 export default function PostCard({post}: { post: Post }) {
   
@@ -56,12 +57,21 @@ export default function PostCard({post}: { post: Post }) {
   const color3 = useThemeColor("color-3");
   const border1 = useThemeColor("border-1");
 
+  function visitProfile(handle: string) {
+    router.navigate({
+      pathname: "/user/[handle]",
+      params: { handle }
+    })
+  }
+
   return (
     <>
       <View style={{marginHorizontal: 24, gap: 12}}>
         {typeof post.author == "object" ? <View style={styles.authorInfo}>
           <View style={{alignItems: "flex-end", flexDirection: "column-reverse"}}>
-            <Image source={{uri: post.author.profileImageUrl}} style={styles.userImage} />
+            <Pressable onPress={() => visitProfile(post.author.handle)}>
+              <Image source={{uri: post.author.profileImageUrl}} style={styles.userImage} />
+            </Pressable>
             {!!post.boostData && <View style={styles.boostUserImage}>
               <Image source={{uri: (post.boostData.boostedBy as Account).profileImageUrl}} style={{width: "100%", height: "100%", borderRadius: 1e9}} resizeMode={"contain"} />
             </View>}
