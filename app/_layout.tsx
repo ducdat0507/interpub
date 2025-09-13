@@ -7,6 +7,7 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Text } from 'react-native';
+import BottomBar from '@/components/shell/BottomBar';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -33,6 +34,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="index" options={{headerShown: false}} />
       </Stack>
+      <BottomBar />
     </ThemeProvider>
   );
 }

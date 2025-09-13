@@ -24,9 +24,7 @@ import { PubAPI } from "@/api/getAPI";
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
-export default function UserFeed() {
-
-  const [handle, setHandle] = useState("@yhvr@wetdry.world");
+export default function UserFeed({ handle }) {
   const [[localName, domain], setName] = useState(["", ""]);
 
   const [data, setData] = useState({} as Account);
